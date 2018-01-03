@@ -436,7 +436,7 @@ LISTAGG(d.nazwa_dyscypliny, ', ') WITHIN GROUP (ORDER BY d.id_dyscypliny desc) a
 FROM sprawowanie_opieki so join dyscypliny d on d.id_dyscypliny = so.id_trenowanej_dyscypliny
 GROUP BY so.id_trenera;
 
-select p.*, t.NR_licencji as NR_LICENCJI_TRENERSKIEJ, m.NR_licencji as NR_LICENCJI_MASAZYSTY, nvl(t.ukonczona_szkola, m.ukonczona_szkola) AS UKONCZONA_SZKOLA
+select p.imie,p.nazwisko,p.data_zatrudnienia, t.NR_licencji as NR_LICENCJI_TRENERSKIEJ, m.NR_licencji as NR_LICENCJI_MASAZYSTY, nvl(t.ukonczona_szkola, m.ukonczona_szkola) AS UKONCZONA_SZKOLA
 from pracownicy p left join trenerzy t on t.id_pracownika = p.id_pracownika left join masazysci m on m.id_pracownika = p.id_pracownika;
 
 select tren.id_dyscypliny, count(tren.id_treningu) as LICZBA_TRENINGOW_TURNIEJOWSKICH_DYSCYPLIN from treningi tren group by tren.id_dyscypliny
